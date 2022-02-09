@@ -25,6 +25,10 @@ export class HeaderComponent implements OnInit {
       text: 'Add Student',
       route: '/new-students'
     },
+    {
+      text: 'List of new students',
+      route: '/new-students/listNewStudents'
+    },
   ]
 
   constructor() { }

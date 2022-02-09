@@ -1,0 +1,63 @@
+<div class="container">
+
+    <h2>Add New Student</h2>
+    <hr>
+    <div class="row">
+        <div class="col text-center">
+            <form [formGroup]="fg" (ngSubmit)="addStudent()">
+
+                <div class="mb-2 row">
+                    <label class="col-sm-3 col-form-label text-end">Name</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" class="form-control" formControlName="name" placeholder="student name">
+
+                        <span class="form-text text-danger" *ngIf="validFields('name')">
+                            Invalid field</span>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-3 col-form-label text-end">Patronus</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" class="form-control" formControlName="patronus" placeholder="patronus">
+                    </div>
+                    <span class="form-text text-danger" *ngIf="validFields('patronus')">
+                        Invalid field</span>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-3 col-form-label text-end">Year of Birth</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" formControlName="age" placeholder="date of birth">
+                        <span class="form-text text-danger" *ngIf="validFields('age')">
+                            Invalid field</span>
+                    </div>
+                </div>
+                <div class="mb-2 row">
+                    <div class="upload-image-container">
+                        <label class="custom-file-upload" for="file-upload">
+                            <input id="file-upload" type="file" accept="image/*" (change)="showPreview($event)" />
+                            Choose photo
+                        </label>
+
+                        <!-- Image Preview -->
+                        <div class="image-container" *ngIf="imageURL && imageURL !== ''">
+                            <img [src]="imageURL" [alt]="fg.value.name" class="image-preview" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button [disabled]="fg.invalid" type="submit" class="btn btn-primary float-end mb-2">
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

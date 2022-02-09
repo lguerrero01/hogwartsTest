@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CharactersService } from 'src/app/services/characters.service';
@@ -11,6 +11,7 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./characters.component.css'],
 })
 export class CharactersComponent implements OnInit, OnDestroy {
+  @ViewChild(DataTableDirective, { static: false }) datatableElement!: DataTableDirective | undefined;
   public dtOptions: DataTables.Settings = {};
   public dtTrigger: Subject<any> = new Subject<any>();
   public dtElement!: DataTableDirective;
@@ -37,19 +38,18 @@ export class CharactersComponent implements OnInit, OnDestroy {
     };
   }
 
-  public handleChange(house: any): void {
+  public handleChange(house: any) {
     this.charactersService
       .getList(house.value)
-      .subscribe((respData: Character[]) => {
+      .subscribe(async (respData: Character[]) => {
         this.data = respData;
 
         if (this.isDtInitialized) {
           // validating rendering
-          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-            dtInstance.destroy();
-            this.dtTrigger.next(this.data);
+          const dtinstance: DataTables.Api = await this.dtElement.dtInstance;
+          dtinstance.destroy();
+          this.dtTrigger.next(this.data);
           
-          });
         } else {
           this.isDtInitialized = true;
           this.dtTrigger.next(this.data);
