@@ -1,6 +1,6 @@
 export interface OriginalData {
   name: string;
-  age: number;
+  age?: number;
   image: string;
   patronus: string;
   yearOfBirth?: number;

@@ -11,19 +11,19 @@ export class HeaderComponent implements OnInit {
  public navMenu: any[] = [
     {
       text: 'Characters',
-      route: ''
+      route: '/characters'
     },
     {
       text: 'Students',
-      route: ''
+      route: '/students'
     },
     {
       text: 'Teachers',
-      route: ''
+      route: '/teachers'
     },
     {
       text: 'Add Student',
-      route: ''
+      route: '/new-students'
     },
   ]
 

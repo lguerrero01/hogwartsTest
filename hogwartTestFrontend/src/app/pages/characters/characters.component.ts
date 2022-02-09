@@ -41,18 +41,19 @@ export class CharactersComponent implements OnInit, OnDestroy {
     this.charactersService
       .getList(house.value)
       .subscribe((respData: Character[]) => {
-        console.log(respData);
         this.data = respData;
 
         if (this.isDtInitialized) {
           // validating rendering
           this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
             dtInstance.destroy();
+            this.dtTrigger.next(this.data);
+          
           });
         } else {
           this.isDtInitialized = true;
+          this.dtTrigger.next(this.data);
         }
-        this.dtTrigger.next(this.data);
       });
   }
 

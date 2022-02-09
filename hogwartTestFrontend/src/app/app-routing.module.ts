@@ -15,6 +15,27 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'students',
+    loadChildren: () =>
+      import('src/app/pages/students/students.module').then(
+        (m) => m.StudentsModule
+      ),
+  },
+  {
+    path: 'teachers',
+    loadChildren: () =>
+      import('src/app/pages/teachers/teachers.module').then(
+        (m) => m.TeachersModule
+      ),
+  },
+  {
+    path: 'new-students',
+    loadChildren: () =>
+      import('src/app/pages/add-students/add-students.module').then(
+        (m) => m.AddStudentsModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '/characters',
   },
@@ -22,6 +43,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

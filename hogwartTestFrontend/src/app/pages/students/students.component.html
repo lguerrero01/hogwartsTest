@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="row text-center">
+    <h4>Students</h4>
+  </div>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+      class="row-border hover table table-striped table-bordered hover text-center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Patronus</th>
+          <th scope="col">Age</th>
+          <th scope="col">Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of studentsData">
+          <td>{{item.name}}</td>
+          <td>{{item.patronus || "-" }}</td>
+          <td>{{item.yearOfBirth || '-'}}</td>
+          <td>
+            <img *ngIf="!item.image else img" src="../../../assets/empty-img.png" class="card-img-top" alt="NO IMAGE"
+              width="50" height="100">
+            <ng-template #img>
+              <img #img class="small-flag" [src]="item.image" width="100" height="100">
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
