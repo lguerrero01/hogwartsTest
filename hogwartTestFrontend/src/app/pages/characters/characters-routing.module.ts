@@ -4,12 +4,12 @@ import { CharactersComponent } from './characters.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'characters',
     component: CharactersComponent,
   },
   {
     path: '**',
-    redirectTo: '/'
+    redirectTo: ''
   }
 ];
 

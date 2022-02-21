@@ -5,13 +5,11 @@
     <div class="row">
         <div class="col text-center">
             <form [formGroup]="fg" (ngSubmit)="addStudent()">
-
                 <div class="mb-2 row">
                     <label class="col-sm-3 col-form-label text-end">Name</label>
                     <div class="col-sm-9">
 
                         <input type="text" class="form-control" formControlName="name" placeholder="student name">
-
                         <span class="form-text text-danger" *ngIf="validFields('name')">
                             Invalid field</span>
                     </div>

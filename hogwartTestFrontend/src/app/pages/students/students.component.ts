@@ -15,11 +15,11 @@ export class StudentsComponent implements OnInit {
   public dtTrigger: Subject<any> = new Subject<any>();
   public dtElement!: DataTableDirective;
 
-  constructor(private studentsService: StudentsService) {}
-
+  
   public isDtInitialized: boolean = false;
   public studentsData: Student[] = [];
-
+  
+  constructor(private studentsService: StudentsService) {}
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',

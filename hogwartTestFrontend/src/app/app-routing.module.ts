@@ -8,7 +8,7 @@ const routes: Routes = [
     redirectTo: '/characters',
   },
   {
-    path: 'characters',
+    path: 'employees',
     loadChildren: () =>
       import('src/app/pages/characters/characters.module').then(
         (m) => m.CharactersModule
